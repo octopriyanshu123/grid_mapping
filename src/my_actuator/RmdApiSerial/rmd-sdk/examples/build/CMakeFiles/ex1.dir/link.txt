@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ex1.dir/ex2_single.cpp.o -o ex1   -L/home/ws/rmd-sdk/examples/../lib/x86  -Wl,-rpath,/home/ws/rmd-sdk/examples/../lib/x86 -lRmd_Library 
