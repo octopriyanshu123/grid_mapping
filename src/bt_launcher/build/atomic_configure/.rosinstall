@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/octobotics/catkin_ws/src/bt_launcher/build/devel/setup.sh

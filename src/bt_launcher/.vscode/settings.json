@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/octobotics/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/octobotics/stm/octo_stm/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/octobotics/catkin_ws/devel/lib/python3/dist-packages",
+        "/home/octobotics/stm/octo_stm/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

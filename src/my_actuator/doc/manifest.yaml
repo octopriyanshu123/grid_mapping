@@ -1,0 +1,23 @@
+actions: []
+authors: ''
+brief: ''
+bugtracker: ''
+depends:
+- catkin
+- std_msgs
+- geometry_msgs
+- message_runtime
+- roscpp
+- joy
+- message_generation
+description: The my_actuator package
+license: TODO
+maintainers: octo <octo@todo.todo>
+msgs:
+- plot
+- vitals
+- ang_lin_arr
+package_type: package
+repo_url: ''
+srvs: []
+url: ''

@@ -1,0 +1,6 @@
+<launch>
+
+    <node pkg="ut_data" type="ut_thickness_processor" name="ut_thickness_processor" output="screen">
+
+    </node>
+  </launch>

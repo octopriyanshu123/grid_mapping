@@ -1,0 +1,14 @@
+build/
+devel/
+logs/
+.idea/
+.catkin_tools/
+*.pyc
+videos/
+.vscode
+venv/
+cmake-build-debug/
+*.bag
+*.bag.active
+*.csv#
+*.pb

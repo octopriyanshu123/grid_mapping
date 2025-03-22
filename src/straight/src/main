@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+
+import rospy
+from geometry_msgs.msg import PoseStamped, Twist
+from std_msgs.msg import Int32
+from simple_pid import PID
+from std_srvs.srv import Trigger, TriggerResponse
+
+class YawController:
+    def __init__(self):
+        rospy.init_node('yaw_controller', anonymous=True)
+
+        # PID controller initialization for yaw
+        self.yaw_pid = PID(10.0, 0.1, 0.05, setpoint=89.9)
+        self.yaw_pid.sample_time = 0.1  # Sample time in seconds
+        self.yaw_pid.output_limits = (-10.0, 10.0)  # Limit the output to valid angular velocities
+
+        # PID controller initialization for lateral position y
+        self.y_pid = PID(1.0, 0.1, 0.05, setpoint=0.0)
+        self.y_pid.sample_time = 0.1  # Sample time in seconds
+        self.y_pid.output_limits = (-10.0, 10.0)  # Limit the output to valid angular velocities
+
+        # Initialize tracking flag
+        self.tracking_enabled = False
+        self.reverse_enabled = False
+
+        # Linear velocity parameter
+        self.linear_velocity = 0.5  # Initial velocity
+        self.velocity_min = 0.5
+        self.velocity_max = 3.0
+
+        # Subscribers
+        self.sub_yaw = rospy.Subscriber('/position_yaw', PoseStamped, self.yaw_callback)
+        self.sub_control = rospy.Subscriber('/navigation_control', Int32, self.control_callback)
+        
+        # Publisher
+        self.pub = rospy.Publisher('/skid_steer/cmd_vel', Twist, queue_size=10)
+
+        # Services
+        self.srv_increase = rospy.Service('increase_linear_velocity', Trigger, self.increase_velocity_callback)
+        self.srv_decrease = rospy.Service('decrease_linear_velocity', Trigger, self.decrease_velocity_callback)
+
+        self.rate = rospy.Rate(10)  # 10 Hz
+
+    def yaw_callback(self, msg):
+        if self.tracking_enabled or self.reverse_enabled:
+            # Extract the orientation.z data and position.y from the message
+            current_yaw = msg.pose.orientation.z
+
+            # Compute the PID outputs
+            yaw_control_signal = self.yaw_pid(current_yaw)
+
+            # Combine the control signals
+            combined_control_signal = -1 *  yaw_control_signal 
+
+            # Create and publish the Twist message
+            twist_msg = Twist()
+            
+            if self.tracking_enabled:
+                twist_msg.linear.x = self.linear_velocity  # Forward velocity
+            elif self.reverse_enabled:
+                twist_msg.linear.x = -self.linear_velocity  # Reverse velocity
+
+            twist_msg.angular.z = combined_control_signal    # Combined angular velocity for yaw and position y control
+
+            self.pub.publish(twist_msg)
+
+    def control_callback(self, msg):
+        # Update the tracking flag based on the received message
+        if msg.data == 1:
+            self.tracking_enabled = True
+            self.reverse_enabled = False
+        elif msg.data == 0:
+            self.tracking_enabled = False
+            self.reverse_enabled = False
+            # Publish a Twist message with zero velocities
+            twist_msg = Twist()
+            twist_msg.linear.x = 0.0
+            twist_msg.angular.z = 0.0
+            self.pub.publish(twist_msg)
+        elif msg.data == 2:
+            self.reverse_enabled = True
+            self.tracking_enabled = False
+
+    def increase_velocity_callback(self, req):
+        if self.linear_velocity + 0.5 <= self.velocity_max:
+            self.linear_velocity += 0.5
+            return TriggerResponse(success=True, message="Increased linear velocity")
+        else:
+            return TriggerResponse(success=False, message="Linear velocity at maximum limit")
+
+    def decrease_velocity_callback(self, req):
+        if self.linear_velocity - 0.5 >= self.velocity_min:
+            self.linear_velocity -= 0.5
+            return TriggerResponse(success=True, message="Decreased linear velocity")
+        else:
+            return TriggerResponse(success=False, message="Linear velocity at minimum limit")
+
+    def run(self):
+        rospy.spin()
+
+if __name__ == '__main__':
+    try:
+        yaw_controller = YawController()
+        yaw_controller.run()
+    except rospy.ROSInterruptException:
+        pass
+

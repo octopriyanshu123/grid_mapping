@@ -1,0 +1,6 @@
+<launch>
+    
+    <node pkg="wifi_stop" type="wifi_strength_monitor" name="wifi_strength_monitor" output="screen">
+
+    </node>
+  </launch>

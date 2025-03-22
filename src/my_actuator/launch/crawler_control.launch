@@ -1,0 +1,50 @@
+<launch>
+   <arg name="joy_dev" default="/dev/input/js0"/>
+
+    <!-- IDs of each motor -->
+    <arg name="right_front_wheel/id" default="2"/>
+    <arg name="left_front_wheel/id" default="1"/>
+    <arg name="right_rear_wheel/id" default="3"/>
+    <arg name="left_rear_wheel/id" default="4"/>
+
+    <!-- direction of each motor -1 or 1 -->
+    <arg name="right_front_wheel/dir" default="-1"/>
+    <arg name="left_front_wheel/dir" default="1"/>
+    <arg name="right_rear_wheel/dir" default="1"/>
+    <arg name="left_rear_wheel/dir" default="1"/>
+
+        <arg name="velocity_scale" default="60"/>
+
+    <!-- wheel radius and base distance for kinematics calculation -->
+
+    <arg name="wheel_radius" default="0.0525"/>
+    <arg name="wheel_base" default="0.2913"/>
+
+    <!-- Joy node to convert raw joy data to cmd_vel -->
+    <node name="joy_teleop" pkg="my_actuator" type="teleop_joy_node" />
+
+    <!-- main control node -->
+    <node pkg="my_actuator" type="crawler_control_node_2" name="my_actuator" 
+          output="screen" respawn="true" respawn_delay="10">
+
+        <param name="right_front_wheel/id" type="int" value="$(arg right_front_wheel/id)"/>
+        <param name="left_front_wheel/id" type="int" value="$(arg left_front_wheel/id)"/>
+        <param name="right_rear_wheel/id" type="int" value="$(arg right_rear_wheel/id)"/>
+        <param name="left_rear_wheel/id" type="int" value="$(arg left_rear_wheel/id)"/>
+
+
+        <param name="right_front_wheel/dir" type="int" value="$(arg right_front_wheel/dir)"/>
+        <param name="left_front_wheel/dir" type="int" value="$(arg left_front_wheel/dir)"/>
+        <param name="right_rear_wheel/dir" type="int" value="$(arg right_rear_wheel/dir)"/>
+        <param name="left_rear_wheel/dir" type="int" value="$(arg left_rear_wheel/dir)"/>
+
+        <param name="wheel_radius" type="double" value="$(arg wheel_radius)"/>
+        <param name="wheel_base" type="double" value="$(arg wheel_base)"/>
+
+        <param name="velocity_scale" type="int" value="$(arg velocity_scale)"/>
+
+    </node>
+
+
+
+</launch>

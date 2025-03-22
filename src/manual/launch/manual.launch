@@ -1,0 +1,6 @@
+<launch>
+    
+    <node pkg="manual" type="joy_to_motor_direction" name="joy_to_motor_direction" output="screen">
+
+    </node>
+  </launch>

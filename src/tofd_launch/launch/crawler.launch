@@ -1,0 +1,36 @@
+<launch>
+
+  <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen">
+  	<param name="port" value="/dev/stm"/>
+  </node>	
+       <!-- Crawler Drive launch files -->
+  <include file="$(find my_actuator)/launch/crawler_control.launch" /> 
+
+       <!-- Crawler Drive launch files-->
+  <!-- <include file="$(find zed_wrapper)/launch/zed2i.launch" />  -->
+
+  <include file="$(find wifi_strength)/launch/wifi.launch" />
+  
+  <include file="$(find shutdown)/launch/shutdown.launch" />
+
+  <include file="$(find wifi_stop)/launch/wifi_stop.launch" />
+ 
+ <include file="$(find disk_monitor)/launch/disk_monitor.launch" />
+
+  <include file="$(find helper)/launch/helper.launch" />
+
+  <include file="$(find manual)/launch/manual.launch" />
+
+  <include file="$(find bt_launcher)/launch/bt_launch.launch" />
+
+  <include file="$(find serialtoros)/launch/ut_serial.launch" />
+
+  <include file="$(find ut_data)/launch/ut_data.launch" />
+
+  <include file="$(find status)/launch/status.launch" />
+  
+
+<!--<include file="$(find dummy)/launch/dummy.launch" /> -->
+
+</launch>
+

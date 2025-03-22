@@ -1,0 +1,6 @@
+<launch>
+    
+    <node pkg="pose_to_yaw" type="pose_to_yaw_node" name="pose_to_yaw_node" output="screen">
+
+    </node>
+  </launch>

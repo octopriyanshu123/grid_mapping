@@ -1,0 +1,8 @@
+<launch>
+    
+    <node pkg="disk_monitor" type="disk_monitor_node" name="disk_monitor_node" output="screen">
+      
+    </node>
+  
+
+</launch>

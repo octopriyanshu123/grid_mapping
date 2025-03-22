@@ -1,0 +1,6 @@
+<launch>
+    
+    <node pkg="shutdown" type="shutdown_service" name="shutdown_service" output="screen">
+
+    </node>
+  </launch>

@@ -1,0 +1,5 @@
+float32 voltage_percentage
+float32 runtime_seconds
+float32 runtime_minutes
+float32 runtime_hours
+float32 voltage

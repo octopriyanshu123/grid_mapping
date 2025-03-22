@@ -1,0 +1,8 @@
+<launch>
+    
+    <node pkg="lidar_angle" type="pose_subscriber" name="pose_subscriber" output="screen">
+      
+    </node>
+  
+
+</launch>

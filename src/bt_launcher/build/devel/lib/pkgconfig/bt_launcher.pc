@@ -1,0 +1,8 @@
+prefix=/home/octobotics/catkin_ws/src/bt_launcher/build/devel
+
+Name: bt_launcher
+Description: Description of bt_launcher
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/octobotics/stm/octo_stm/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/octobotics/catkin_ws/devel/include/**",
+        "/home/octobotics/catkin_ws/src/adjust_actuator_pose/include/**",
+        "/home/octobotics/catkin_ws/src/control_logic/include/**",
+        "/home/octobotics/catkin_ws/src/disk_monitor/include/**",
+        "/home/octobotics/catkin_ws/src/hector_slam/hector_geotiff/include/**",
+        "/home/octobotics/catkin_ws/src/hector_slam/hector_map_tools/include/**",
+        "/home/octobotics/catkin_ws/src/hector_slam/hector_mapping/include/**",
+        "/home/octobotics/catkin_ws/src/hector_slam/hector_marker_drawing/include/**",
+        "/home/octobotics/catkin_ws/src/lateral_shift/include/**",
+        "/home/octobotics/catkin_ws/src/stop_auto/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
