@@ -1,0 +1,6 @@
+<launch>
+    
+    <node pkg="status" type="watchdog_node" name="watchdog_node" output="screen">
+
+    </node>
+  </launch>
