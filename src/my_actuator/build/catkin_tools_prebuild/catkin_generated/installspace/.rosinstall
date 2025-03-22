@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/octobotics/my_actuator/install/setup.sh

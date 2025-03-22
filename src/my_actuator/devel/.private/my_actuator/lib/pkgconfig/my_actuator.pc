@@ -1,0 +1,8 @@
+prefix=/home/octobotics/my_actuator/devel/.private/my_actuator
+
+Name: my_actuator
+Description: Description of my_actuator
+Version: 0.0.0
+Cflags: -I/home/octobotics/my_actuator/devel/.private/my_actuator/include -I/home/octobotics/my_actuator/src/my_actuator/include
+Libs: -L${prefix}/lib -locto_crawler
+Requires: joy roscpp std_msgs message_runtime

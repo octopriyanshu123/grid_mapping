@@ -1,0 +1,6 @@
+devel_space: /home/octobotics/my_actuator/devel
+install: false
+install_space: /home/octobotics/my_actuator/install
+profile: default
+source_space: /home/octobotics/my_actuator/src
+workspace: /home/octobotics/my_actuator

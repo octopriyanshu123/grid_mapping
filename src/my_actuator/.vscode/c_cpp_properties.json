@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/vibi/Downloads/xavier_13-3_15-40/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/vibi/Downloads/xavier_13-3_15-40/src/my_actuator/include/**",
+        "/home/vibi/Downloads/xavier_13-3_15-40/src/octo_arm_teleop/include/**",
+        "/home/vibi/Downloads/xavier_13-3_15-40/src/watchdog/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

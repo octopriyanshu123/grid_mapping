@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/octo/ws/devel/include/**",
+                "/opt/ros/noetic/include/**",
+                "/home/octo/ws/src/my_actuator/include/**",
+                "/usr/include/**",
+                "/home/octo/ws/src/my_actuator/RmdApiSerial/rmd/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
+}
