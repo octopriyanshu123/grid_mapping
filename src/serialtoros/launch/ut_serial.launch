@@ -1,0 +1,7 @@
+<launch>
+
+
+<node name="ut_serial_node" pkg="serialtoros" type="ut_node" />
+<node name ="intrupt_node" pkg="serialtoros" type="intrupt_node" />
+
+</launch>
